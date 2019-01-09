@@ -14,7 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::prefix('kamar')->group(function()
 {
 	Route::post('/save', 'KamarController@save');
@@ -60,6 +59,7 @@ Route::prefix('saran')->group(function()
 	Route::get('/edit/{id}', 'SaranController@edit');
 	Route::get('/delete/{id}', 'SaranController@delete');
 });
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');

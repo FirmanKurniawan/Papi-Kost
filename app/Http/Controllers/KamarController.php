@@ -60,4 +60,6 @@ class KamarController extends Controller
 
     	return view('kamar.index');
     }
+
+
 }
