@@ -32,6 +32,15 @@ Route::prefix('kost')->group(function()
 	Route::get('/delete/{id}', 'KostController@delete');
 });
 
+Route::prefix('saran')->group(function()
+{
+	Route::post('/save', 'SaranController@save');
+	Route::get('/all', 'SaranController@all');
+	Route::post('/update', 'SaranController@update');
+	Route::get('/edit/{id}', 'SaranController@edit');
+	Route::get('/delete/{id}', 'SaranController@delete');
+});
+
 Route::prefix('penginap')->group(function()
 {
 	Route::post('/save', 'PenginapController@save');
@@ -75,15 +84,3 @@ Route::group(['prefix' => 'user'] , function(){
 	});
 });
 		Route::get('/kost/all', 'KostController@all');
-=======
-Route::prefix('saran')->group(function()
-{
-	Route::post('/save', 'SaranController@save');
-	Route::get('/all', 'SaranController@all');
-	Route::post('/update', 'SaranController@update');
-	Route::get('/edit/{id}', 'SaranController@edit');
-	Route::get('/delete/{id}', 'SaranController@delete');
-});
-
-Route::get('/home', 'HomeController@index')->name('home');
->>>>>>> 28bf2e54e3784099cc555ce0771cf804966b5d84
