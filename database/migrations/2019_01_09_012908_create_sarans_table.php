@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePenginapsTable extends Migration
+class CreateSaransTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreatePenginapsTable extends Migration
      */
     public function up()
     {
-        Schema::create('penginaps', function (Blueprint $table) {
+        Schema::create('sarans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->string('email');
-            $table->string('jenis_kelamin');
-            $table->string('umur');
-            $table->string('telepon');
             $table->string('alamat');
-            $table->string('status');
-            $table->string('foto');
+            $table->string('telepon');
+            $table->string('email');
+            $table->string('deskripsi');
+            $table->string('gambar');
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ class CreatePenginapsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penginaps');
+        Schema::dropIfExists('sarans');
     }
 }
