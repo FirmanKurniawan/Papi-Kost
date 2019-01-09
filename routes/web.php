@@ -26,29 +26,39 @@ Route::prefix('kamar')->group(function()
 
 Route::prefix('kost')->group(function()
 {
-	Route::get('/save', 'KostController@save');
+	Route::post('/save', 'KostController@save');
 	Route::get('/all', 'KostController@all');
-	Route::get('/update', 'KostController@update');
+	Route::post('/update', 'KostController@update');
 	Route::get('/edit/{id}', 'KostController@edit');
 	Route::get('/delete/{id}', 'KostController@delete');
 });
 
 Route::prefix('penginap')->group(function()
 {
-	Route::get('/save', 'PenginapController@save');
+	Route::post('/save', 'PenginapController@save');
 	Route::get('/all', 'PenginapController@all');
-	Route::get('/update', 'PenginapController@update');
+	Route::post('/update', 'PenginapController@update');
 	Route::get('/edit/{id}', 'PenginapController@edit');
 	Route::get('/delete/{id}', 'PenginapController@delete');
 });
 
 Route::prefix('pesanan')->group(function()
 {
-	Route::get('/save', 'PesananController@save');
+	Route::post('/save', 'PesananController@save');
 	Route::get('/all', 'PesananController@all');
-	Route::get('/update', 'PesananController@update');
+	Route::post('/update', 'PesananController@update');
 	Route::get('/edit/{id}', 'PesananController@edit');
 	Route::get('/delete/{id}', 'PesananController@delete');
+});
+Auth::routes();
+
+Route::prefix('saran')->group(function()
+{
+	Route::post('/save', 'SaranController@save');
+	Route::get('/all', 'SaranController@all');
+	Route::post('/update', 'SaranController@update');
+	Route::get('/edit/{id}', 'SaranController@edit');
+	Route::get('/delete/{id}', 'SaranController@delete');
 });
 Auth::routes();
 
