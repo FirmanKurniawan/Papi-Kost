@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Dashboard</title>
+  <title>Tambah Kost</title>
   <!-- plugins:css -->
    <link rel="stylesheet" href="{{ asset('css/iconfonts/mdi/css/materialdesignicons.min.css') }}">
   <link rel="stylesheet" href="{{asset('css/vendor.bundle.base.css') }}">
@@ -63,21 +63,39 @@
       </nav>
       <!-- partial -->
       <!-- tempat add -->
-                  <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card" style="margin-left: 100px;margin-right: 100px;margin-right: 100px;margin-top: 100px">
-                            <div class="card-header text-white text-center bg-gradient-danger">Admin Dashboard</div>
-
-                            <div class="card-body">
-                                <center>
-                                    <h2>Welcome {{Auth::user()->name}}</h2>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
+      <div class="container">
+        <div class="row justify-content-center" style="color: red;">
+          <div class="col-md-8" style="margin-top: 25px">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="formGroupExampleInput">Nama Kost</label>
+                  <input type="text" class="form-control" name="nama_kost" id="formGroupExampleInput" placeholder="Nama Kost" required>
                 </div>
-            </div>
+                <div class="form-group col-md-6">
+                  <label for="formGroupExampleInput">Jumlah Kamar</label>
+                  <input type="number" class="form-control" name="jumlah_kamar" id="formGroupExampleInput" placeholder="Jumlah Kamar" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput">Alamat Kost</label>
+                <input type="text" class="form-control" name="alamat_kost" id="formGroupExampleInput" placeholder="Alamat Kost" required>
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput">Kontak Kost</label>
+                  <input type="text" class="form-control" name="kontak_kost" id="formGroupExampleInput" placeholder="Kontak Kost" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="formGroupExampleInput">Wilayah Kost</label>
+                  <input type="text" class="form-control" name="wilayah_kost" id="formGroupExampleInput" placeholder="Wilayah Kost" required>
+                </div>
+                @csrf
+                <button class="btn btn-outline-success float-right" type="submit" style="size: 50px;"><i class="fas fa-plus-circle"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
       <!-- tutup add -->
       <!-- main-panel ends -->
     </div>
