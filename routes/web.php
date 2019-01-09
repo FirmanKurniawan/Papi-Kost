@@ -11,11 +11,17 @@
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', function () {
     return view('welcome');
 });
+=======
+Route::get('/', 'HomeController@welcome');
+
+>>>>>>> 883e19ff183ed2d616a8a241c3980205ac17c1d0
 Route::prefix('kamar')->group(function()
 {
+	Route::get('/add', 'KamarController@add');
 	Route::post('/save', 'KamarController@save');
 	Route::get('/all', 'KamarController@all');
 	Route::post('/update', 'KamarController@update');
@@ -30,6 +36,15 @@ Route::prefix('kost')->group(function()
 	Route::post('/update', 'KostController@update');
 	Route::get('/edit/{id}', 'KostController@edit');
 	Route::get('/delete/{id}', 'KostController@delete');
+});
+
+Route::prefix('saran')->group(function()
+{
+	Route::post('/save', 'SaranController@save');
+	Route::get('/all', 'SaranController@all');
+	Route::post('/update', 'SaranController@update');
+	Route::get('/edit/{id}', 'SaranController@edit');
+	Route::get('/delete/{id}', 'SaranController@delete');
 });
 
 Route::prefix('penginap')->group(function()
@@ -51,15 +66,33 @@ Route::prefix('pesanan')->group(function()
 });
 Auth::routes();
 
-Route::prefix('saran')->group(function()
-{
-	Route::post('/save', 'SaranController@save');
-	Route::get('/all', 'SaranController@all');
-	Route::post('/update', 'SaranController@update');
-	Route::get('/edit/{id}', 'SaranController@edit');
-	Route::get('/delete/{id}', 'SaranController@delete');
-});
+Route::get('/', 'HomeController@index');
 
-Auth::routes();
+Route::group(['prefix' => 'admin'] , function(){
+	Route::group(['middleware' => 'admin'], function(){
+		Route::get('/', 'AdminController@index');
+		Route::get('/verifikasi', 'AdminController@verifikasi');
+		Route::get('/kamar/all', 'KamarController@all');
+		Route::get('/datauser', 'AdminController@datauser');
+		Route::get('/datauser/add', 'AdminController@adduser');
+		Route::post('/datauser/save', 'AdminController@saveuser');
+		Route::get('/datauser/edit/{id}','AdminController@edituser');
+		Route::post('/datauser/update/{id}','AdminController@updateuser');
+		Route::get('/datauser/delete/{id}','AdminController@deleteuser');
+	});
+});
+<<<<<<< HEAD
+
 
 Route::get('/home', 'HomeController@index');
+=======
+
+Route::group(['prefix' => 'user'] , function(){
+	Route::group(['middleware' => 'user'], function(){
+		Route::get('/', 'UserController@index');
+		Route::get('/penginap/all', 'PenginapController@all');
+		Route::get('/verifikasi', 'AdminController@verifikasi');
+	});
+});
+		Route::get('/kost/all', 'KostController@all');
+>>>>>>> 883e19ff183ed2d616a8a241c3980205ac17c1d0
