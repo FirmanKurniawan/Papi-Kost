@@ -11,12 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@welcome');
 
 Route::prefix('kamar')->group(function()
 {
+	Route::get('/add', 'KamarController@add');
 	Route::post('/save', 'KamarController@save');
 	Route::get('/all', 'KamarController@all');
 	Route::post('/update', 'KamarController@update');
@@ -52,4 +51,27 @@ Route::prefix('pesanan')->group(function()
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
+
+Route::group(['prefix' => 'admin'] , function(){
+	Route::group(['middleware' => 'admin'], function(){
+		Route::get('/', 'AdminController@index');
+		Route::get('/verifikasi', 'AdminController@verifikasi');
+		Route::get('/kamar/all', 'KamarController@all');
+		Route::get('/datauser', 'AdminController@datauser');
+		Route::get('/datauser/add', 'AdminController@adduser');
+		Route::post('/datauser/save', 'AdminController@saveuser');
+		Route::get('/datauser/edit/{id}','AdminController@edituser');
+		Route::post('/datauser/update/{id}','AdminController@updateuser');
+		Route::get('/datauser/delete/{id}','AdminController@deleteuser');
+	});
+});
+
+Route::group(['prefix' => 'user'] , function(){
+	Route::group(['middleware' => 'user'], function(){
+		Route::get('/', 'UserController@index');
+		Route::get('/penginap/all', 'PenginapController@all');
+		Route::get('/verifikasi', 'AdminController@verifikasi');
+	});
+});
+		Route::get('/kost/all', 'KostController@all');

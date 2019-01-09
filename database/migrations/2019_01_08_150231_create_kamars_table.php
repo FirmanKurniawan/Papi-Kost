@@ -18,6 +18,8 @@ class CreateKamarsTable extends Migration
             $table->string('tipe_kamar');
             $table->string('harga');
             $table->string('deskripsi_kamar');
+            $table->string('diskon')->nullable();
+            $table->string('hasil')->nullable();
             $table->timestamps();
         });
     }
